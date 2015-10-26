@@ -19,10 +19,10 @@ Black: #000000;
 
 1. Welcome
 2. Navbar
-3. About 
-4. Skills 
-5. Work Experience 
-6. Portfolio 
+3. About
+4. Skills
+5. Work Experience
+6. Portfolio
 7. Contact
 8. Footer
 -------------------------------------------------------------------*/
@@ -245,6 +245,8 @@ footer .vimeo { background: url(../images/vimeo.png) center no-repeat #444749; }
 footer .vimeo:hover { background-color: #87d2e0; }
 footer .tumblr { background: url(../images/tumblr.png) center no-repeat #444749; }
 footer .tumblr:hover { background-color: #4d7Da1; }
+footer .github { background: url(../images/github.png) center no-repeat #444749; }
+footer .github:hover { background-color: #000; }
 footer .linkedin { background: url(../images/linkedin.png) center no-repeat #444749; }
 footer .linkedin:hover { background-color: #0073b2; }
 

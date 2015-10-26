@@ -88,10 +88,10 @@ Black: #000000;
 
 1. Welcome
 2. Navbar
-3. About 
-4. Skills 
-5. Work Experience 
-6. Portfolio 
+3. About
+4. Skills
+5. Work Experience
+6. Portfolio
 7. Contact
 8. Footer
 -------------------------------------------------------------------*/
@@ -463,6 +463,12 @@ footer{
 			background-color:#4d7Da1;
 		}
 	}
+	.github{
+		background:url(../images/github.png) center no-repeat $socialIconsColor;
+		&:hover{
+			background-color:#000;
+		}
+	}
 	.linkedin{
 		background:url(../images/linkedin.png) center no-repeat $socialIconsColor;
 		&:hover{
@@ -509,7 +515,7 @@ input, textarea{
 		opacity: 0;
 		-webkit-transform: translateY(20px);
 	}
-	
+
 	100% {
 		opacity: 1;
 		-webkit-transform: translateY(0);
@@ -521,7 +527,7 @@ input, textarea{
 		opacity: 0;
 		-moz-transform: translateY(20px);
 	}
-	
+
 	100% {
 		opacity: 1;
 		-moz-transform: translateY(0);
@@ -533,7 +539,7 @@ input, textarea{
 		opacity: 0;
 		-o-transform: translateY(20px);
 	}
-	
+
 	100% {
 		opacity: 1;
 		-o-transform: translateY(0);
@@ -545,7 +551,7 @@ input, textarea{
 		opacity: 0;
 		transform: translateY(20px);
 	}
-	
+
 	100% {
 		opacity: 1;
 		transform: translateY(0);
@@ -574,5 +580,3 @@ input, textarea{
 	}
 
 }
-
-
