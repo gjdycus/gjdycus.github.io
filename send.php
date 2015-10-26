@@ -18,7 +18,7 @@
 
 	//Info Send
 	require_once('classes/class.phpmailer.php');
-	$mail             	= new PHPMailer();
+	$mail             	= new PHPMailer(true);
 	// $mail->IsSMTP();
 	$mail->SMTPDebug  	= true;
 	$mail->SMTPAuth   	= true;
