@@ -53,7 +53,7 @@ $(document).ready(function(){
 	// Skills
 	var owl = $("#skills-slide");
 	owl.owlCarousel({
-		autoPlay:true,
+		autoPlay:false,
 		items:4,
 		itemsDesktop:[1000,4],
 		itemsDesktopSmall:[900,3],
