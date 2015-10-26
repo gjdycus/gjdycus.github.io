@@ -19,7 +19,7 @@
 	//Info Send
 	require_once('classes/class.phpmailer.php');
 	$mail             	= new PHPMailer();
-	$mail->IsSMTP();
+	// $mail->IsSMTP();
 	$mail->SMTPDebug  	= true;
 	$mail->SMTPAuth   	= true;
 	$mail->Host       	= 'smtp.mandrillapp.com';
