@@ -156,6 +156,10 @@ $(document).ready(function(){
 		});
 	}
 
+	$("form[name=contactform] input[name='send[name]']").val("");
+	$("form[name=contactform] input[name='send[email]']").val("");
+	$("form[name=contactform] textarea[name='send[message]']").val("");
+
 	// Form Validation
 	$.validate({
 		form:'.contactform',
@@ -167,10 +171,6 @@ $(document).ready(function(){
 		},
 		onSuccess:function(){
 			$('.sendcontact').prop("disabled",true);
-			$('p.error').html('Your message sent.');
-			$("form[name=contactform] input[name='send[name]']").val("");
-			$("form[name=contactform] input[name='send[email]']").val("");
-			$("form[name=contactform] textarea[name='send[message]']").val("");
 		}
 	});
 
