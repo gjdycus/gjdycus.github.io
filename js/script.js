@@ -168,9 +168,9 @@ $(document).ready(function(){
 		onSuccess:function(){
 			$('.sendcontact').prop("disabled",true);
 			$('p.error').html('Your message sent.');
-			$("form[name=contactform] input[name='name']").val("");
-			$("form[name=contactform] input[name='email']").val("");
-			$("form[name=contactform] textarea[name='message']").val("");
+			$("form[name=contactform] input[name='send[name]']").val("");
+			$("form[name=contactform] input[name='send[email]']").val("");
+			$("form[name=contactform] textarea[name='send[message]']").val("");
 		}
 	});
 
