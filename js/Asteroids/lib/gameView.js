@@ -11,6 +11,9 @@ var Asteroids;
     this.game = new Asteroids.Game();
   };
 
+  GameView.BACKGROUND_IMG = new Image(Asteroids.Game.DIM_X, Asteroids.Game.DIM_Y);
+  GameView.BACKGROUND_IMG.src = "js/Asteroids/lib/space.jpg";
+
   GameView.MOVES = {
     "up": [0, -2],
     "left": [-2, 0],
@@ -25,15 +28,20 @@ var Asteroids;
     }.bind(this));
 
     key("space", function (e) { e.preventDefault(); this.game.ship.fireBullet(); }.bind(this));
+
+    key("enter", function () {
+      if (!this.game.playing) {
+        this.game.beginPlaying();
+      }
+    }.bind(this));
   };
 
   GameView.prototype.start = function () {
-    var that = this;
-    setInterval(function() {
-      that.game.step();
-      that.game.draw(that.context);
-    }, 20);
-
     this.bindKeyHandlers();
+
+    setInterval(function() {
+      this.game.step();
+      this.game.draw(this.context);
+    }.bind(this), 20);
   };
 })(this);

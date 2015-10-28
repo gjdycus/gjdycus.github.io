@@ -9,8 +9,10 @@ var Asteroids;
   var Game = Asteroids.Game = function () {
     this.asteroids = [];
     this.bullets = [];
-    this.ship = new Asteroids.Ship({ pos: this.randomPosition(), game: this });
-    this.addAsteroids();
+    this.lives = 5;
+    this.score = 0;
+    this.playing = false;
+    this.gameOver = false;
   };
 
   Game.DIM_X = 1000;
@@ -43,9 +45,32 @@ var Asteroids;
   Game.prototype.draw = function (context) {
     context.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     context.drawImage(Game.BACKGROUND_IMG, 0, 0);
-    this.allObjects().forEach (function(el){
-      el.draw(context);
-    });
+    if (this.playing) {
+      this.allObjects().forEach (function(el){
+        el.draw(context);
+      });
+      context.font = "48px futura";
+      context.fillStyle = "#fff";
+      context.fillText("LIVES: " + this.lives, 10, 50);
+      context.fillText(String(this.score), 10, 590);
+    } else if (!this.gameOver) {
+      context.font = "70px futura";
+      context.fillStyle = "#fff";
+      context.fillText("ASTEROIDS", 300, 230);
+      context.font = "36px futura";
+      context.fillStyle = "#fff";
+      context.fillText("PRESS ENTER TO PLAY", 300, 350);
+    } else {
+      context.font = "70px futura";
+      context.fillStyle = "#fff";
+      context.fillText("GAME OVER", 280, 270);
+      context.font = "60px futura";
+      context.fillStyle = "#fff";
+      context.fillText("SCORE: " + this.score, 280, 340);
+      context.font = "30px futura";
+      context.fillStyle = "#fff";
+      context.fillText("PRESS ENTER TO REPLAY", 280, 400);
+    }
   };
 
   Game.prototype.moveObjects = function () {
@@ -66,8 +91,11 @@ var Asteroids;
   };
 
   Game.prototype.step = function () {
-    this.moveObjects();
-    this.checkCollisions();
+    if (this.playing) {
+      this.moveObjects();
+      this.checkCollisions();
+      this.checkGameOver();
+    }
   };
 
   Game.prototype.remove = function (object) {
@@ -98,6 +126,27 @@ var Asteroids;
 
   Game.prototype.allObjects = function () {
     return this.asteroids.concat([this.ship]).concat(this.bullets);
+  };
+
+  Game.prototype.beginPlaying = function () {
+    this.gameOver = false;
+    this.playing = true;
+    this.lives = 5;
+    this.score = 0;
+    if (this.asteroids.length === 0) {
+      this.addAsteroids();
+      this.ship = new Asteroids.Ship({ pos: this.randomPosition(), game: this });
+    }
+  };
+
+  Game.prototype.checkGameOver = function () {
+    if (this.lives <= 0) {
+      this.gameOver = true;
+      this.playing = false;
+      this.asteroids = [];
+      this.bullets = [];
+      this.ship = {};
+    }
   };
 
 })(this);

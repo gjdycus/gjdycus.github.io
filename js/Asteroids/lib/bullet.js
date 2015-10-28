@@ -24,8 +24,10 @@ var Asteroids;
       this.remove();
       if (otherObject.radius === Asteroids.Asteroid.RADIUS / 2) {
         otherObject.remove();
+        this.game.score += 50;
       } else {
         otherObject.radius /= 2;
+        this.game.score += 75;
       }
     }
   };
