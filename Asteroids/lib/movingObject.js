@@ -22,16 +22,30 @@ var Asteroids;
   };
 
   MovingObject.prototype.move = function() {
-    this.pos = this.game.wrap(this.pos);
-    this.pos[0] += this.vel[0];
-    this.pos[1] += this.vel[1];
+    this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
+
+    if (this.game.isOutOfBounds(this.pos)) {
+      if (this.isWrappable) {
+        this.pos = this.game.wrap(this.pos);
+      } else {
+        this.remove();
+      }
+    }
   };
+
+  MovingObject.prototype.isWrappable = true;
 
   MovingObject.prototype.isCollidedWith = function(otherObject) {
     return (MovingObject.distance(this, otherObject) < (this.radius + otherObject.radius));
   };
 
+  MovingObject.prototype.collideWith = function () {};
+
   MovingObject.distance = function(obj1, obj2) {
     return Math.sqrt(Math.pow((obj1.pos[0] - obj2.pos[0]), 2) + Math.pow((obj1.pos[1] - obj2.pos[1]), 2));
+  };
+
+  MovingObject.prototype.remove = function () {
+    this.game.remove(this);
   };
 })(this);

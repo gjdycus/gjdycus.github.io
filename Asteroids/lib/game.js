@@ -6,19 +6,30 @@ var Asteroids;
     Asteroids = root.Asteroids = {};
   }
 
-
   var Game = Asteroids.Game = function () {
     this.asteroids = [];
+    this.bullets = [];
+    this.ship = new Asteroids.Ship({ pos: this.randomPosition(), game: this });
     this.addAsteroids();
   };
 
   Game.DIM_X = 1024;
   Game.DIM_Y = 768;
-  Game.NUM_ASTEROIDS = 4;
+  Game.NUM_ASTEROIDS = 6;
+  Game.BACKGROUND_IMG = new Image(Game.DIM_X, Game.DIM_Y);
+  Game.BACKGROUND_IMG.src = "./lib/space.jpg";
+
+  Game.prototype.add = function (object) {
+    if (object instanceof Asteroids.Asteroid) {
+      this.asteroids.push(object);
+    } else if (object instanceof Asteroids.Bullet) {
+      this.bullets.push(object);
+    }
+  };
 
   Game.prototype.addAsteroids = function () {
     for (var i = 0; i < Game.NUM_ASTEROIDS; i++) {
-      this.asteroids.push(new Asteroids.Asteroid(this.randomPosition(), this));
+      this.add(new Asteroids.Asteroid({ game: this }));
     }
   };
 
@@ -31,13 +42,14 @@ var Asteroids;
 
   Game.prototype.draw = function (context) {
     context.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    this.asteroids.forEach (function(el){
+    context.drawImage(Game.BACKGROUND_IMG, 0, 0);
+    this.allObjects().forEach (function(el){
       el.draw(context);
     });
   };
 
   Game.prototype.moveObjects = function () {
-    this.asteroids.forEach (function(el){
+    this.allObjects().forEach (function(el){
       el.move();
     });
   };
@@ -58,20 +70,34 @@ var Asteroids;
     this.checkCollisions();
   };
 
-  Game.prototype.remove = function (asteroid) {
-    asteroid.radius = 0;
+  Game.prototype.remove = function (object) {
+    if (object instanceof Asteroids.Bullet) {
+      this.bullets.splice(this.bullets.indexOf(object), 1);
+    } else if (object instanceof Asteroids.Asteroid) {
+      var idx = this.asteroids.indexOf(object);
+      this.asteroids[idx] = new Asteroids.Asteroid({ game: this });
+    } else if (object instanceof Asteroids.Ship) {
+      this.ships.splice(this.ships.indexOf(object), 1);
+    }
   };
 
   Game.prototype.checkCollisions = function () {
     var that = this;
-    that.asteroids.forEach(function (asteroid1) {
-      that.asteroids.forEach(function (asteroid2) {
-        if (asteroid1.isCollidedWith(asteroid2) && asteroid1 !== asteroid2) {
-          that.remove(asteroid1);
-          that.remove(asteroid2);
+    this.allObjects().forEach(function (object1) {
+      that.allObjects().forEach(function (object2) {
+        if (object1.isCollidedWith(object2) && object1 !== object2) {
+          object1.collideWith(object2);
         }
       });
     });
+  };
+
+  Game.prototype.isOutOfBounds = function (pos) {
+    return (pos[0] < 0) || (pos[1] < 0) || (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+  };
+
+  Game.prototype.allObjects = function () {
+    return this.asteroids.concat([this.ship]).concat(this.bullets);
   };
 
 })(this);
