@@ -13,7 +13,7 @@ var Asteroids;
     Asteroids.MovingObject.call(this, options);
   };
 
-  Bullet.RADIUS = 4;
+  Bullet.RADIUS = 5;
   Bullet.COLOR = "cyan";
   Bullet.SPEED = 10;
 

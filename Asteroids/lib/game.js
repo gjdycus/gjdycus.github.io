@@ -13,8 +13,8 @@ var Asteroids;
     this.addAsteroids();
   };
 
-  Game.DIM_X = 1024;
-  Game.DIM_Y = 768;
+  Game.DIM_X = 1000;
+  Game.DIM_Y = 600;
   Game.NUM_ASTEROIDS = 6;
   Game.BACKGROUND_IMG = new Image(Game.DIM_X, Game.DIM_Y);
   Game.BACKGROUND_IMG.src = "./lib/space.jpg";

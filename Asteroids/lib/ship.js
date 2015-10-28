@@ -13,7 +13,7 @@ var Asteroids;
     Asteroids.MovingObject.call(this, options);
   };
 
-  Ship.RADIUS = 20;
+  Ship.RADIUS = 37.5;
   Ship.COLOR = "red";
 
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
@@ -49,5 +49,16 @@ var Asteroids;
     } else if (this.vel[1] < -10) {
       this.vel[1] = -10;
     }
+  };
+
+  Ship.prototype.draw = function (context) {
+    var ship = new Image(Ship.RADIUS*2, Ship.RADIUS*2);
+    var radians = this.vel[0] < 0 ? Math.PI - (Math.atan(-this.vel[1]/this.vel[0])) : Math.atan(this.vel[1]/this.vel[0]);
+    ship.src = "./lib/ship.png";
+    context.save();
+    context.translate(this.pos[0], this.pos[1]);
+    context.rotate(radians);
+    context.drawImage(ship, -Ship.RADIUS, -Ship.RADIUS);
+    context.restore();
   };
 })(this);
