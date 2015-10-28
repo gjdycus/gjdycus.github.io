@@ -69,7 +69,7 @@ var Asteroids;
       context.fillText("SCORE: " + this.score, 280, 340);
       context.font = "30px futura";
       context.fillStyle = "#fff";
-      context.fillText("PRESS ENTER TO REPLAY", 280, 400);
+      context.fillText("PRESS ENTER TO PLAY AGAIN", 280, 400);
     }
   };
 
