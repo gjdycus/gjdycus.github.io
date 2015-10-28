@@ -29,7 +29,7 @@ var Asteroids;
   Asteroid.prototype.draw = function (context) {
     var asteroid = new Image(Asteroid.RADIUS*2, Asteroid.RADIUS*2);
     var radians = this.vel[0] < 0 ? Math.PI - (Math.atan(-this.vel[1]/this.vel[0])) : Math.atan(this.vel[1]/this.vel[0]);
-    asteroid.src = "./lib/asteroid.png";
+    asteroid.src = "js/Asteroids/lib/asteroid.png";
     context.save();
     context.translate(this.pos[0], this.pos[1]);
     context.rotate(radians);

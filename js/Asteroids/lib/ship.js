@@ -54,7 +54,7 @@ var Asteroids;
   Ship.prototype.draw = function (context) {
     var ship = new Image(Ship.RADIUS*2, Ship.RADIUS*2);
     var radians = this.vel[0] < 0 ? Math.PI - (Math.atan(-this.vel[1]/this.vel[0])) : Math.atan(this.vel[1]/this.vel[0]);
-    ship.src = "./lib/ship.png";
+    ship.src = "js/Asteroids/lib/ship.png";
     context.save();
     context.translate(this.pos[0], this.pos[1]);
     context.rotate(radians);

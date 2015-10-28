@@ -17,7 +17,7 @@ var Asteroids;
   Game.DIM_Y = 600;
   Game.NUM_ASTEROIDS = 6;
   Game.BACKGROUND_IMG = new Image(Game.DIM_X, Game.DIM_Y);
-  Game.BACKGROUND_IMG.src = "./lib/space.jpg";
+  Game.BACKGROUND_IMG.src = "js/Asteroids/lib/space.jpg";
 
   Game.prototype.add = function (object) {
     if (object instanceof Asteroids.Asteroid) {
