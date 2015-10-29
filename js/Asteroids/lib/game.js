@@ -54,12 +54,22 @@ var Asteroids;
       context.fillText("LIVES: " + this.lives, 10, 50);
       context.fillText(String(this.score), 10, 590);
     } else if (!this.gameOver) {
+      var arrowKeys = new Image(200, 130);
+      arrowKeys.src = "js/Asteroids/lib/arrow_keys.png";
+      var spaceBar = new Image(500, 80);
+      spaceBar.src = "js/Asteroids/lib/space_bar.png";
       context.font = "70px futura";
       context.fillStyle = "#fff";
-      context.fillText("ASTEROIDS", 300, 230);
+      context.fillText("ASTEROIDS", 300, 80);
+      context.drawImage(arrowKeys, 120, 210);
+      context.drawImage(spaceBar, 420, 260);
+      context.font = "24px futura";
+      context.fillStyle = "#fff";
+      context.fillText("MOVE", 180, 370);
+      context.fillText("FIRE BULLET", 600, 370);
       context.font = "36px futura";
       context.fillStyle = "#fff";
-      context.fillText("PRESS ENTER TO PLAY", 300, 350);
+      context.fillText("PRESS ENTER TO PLAY", 300, 590);
     } else {
       context.font = "70px futura";
       context.fillStyle = "#fff";
