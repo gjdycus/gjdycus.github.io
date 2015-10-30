@@ -11,9 +11,6 @@ var Asteroids;
     this.game = new Asteroids.Game();
   };
 
-  GameView.BACKGROUND_IMG = new Image(Asteroids.Game.DIM_X, Asteroids.Game.DIM_Y);
-  GameView.BACKGROUND_IMG.src = "js/Asteroids/lib/space.jpg";
-
   GameView.MOVES = {
     "up": [0, -2],
     "left": [-2, 0],

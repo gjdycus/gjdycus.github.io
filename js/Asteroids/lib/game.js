@@ -19,7 +19,7 @@ var Asteroids;
   Game.DIM_Y = 600;
   Game.NUM_ASTEROIDS = 6;
   Game.BACKGROUND_IMG = new Image(Game.DIM_X, Game.DIM_Y);
-  Game.BACKGROUND_IMG.src = "js/Asteroids/lib/space.jpg";
+  Game.BACKGROUND_IMG.src = "js/Asteroids/lib/images/space.jpg";
 
   Game.prototype.add = function (object) {
     if (object instanceof Asteroids.Asteroid) {
@@ -55,9 +55,9 @@ var Asteroids;
       context.fillText(String(this.score), 10, 590);
     } else if (!this.gameOver) {
       var arrowKeys = new Image(200, 130);
-      arrowKeys.src = "js/Asteroids/lib/arrow_keys.png";
+      arrowKeys.src = "js/Asteroids/lib/images/arrow_keys.png";
       var spaceBar = new Image(500, 80);
-      spaceBar.src = "js/Asteroids/lib/space_bar.png";
+      spaceBar.src = "js/Asteroids/lib/images/space_bar.png";
       context.font = "70px futura";
       context.fillStyle = "#fff";
       context.fillText("ASTEROIDS", 300, 80);
