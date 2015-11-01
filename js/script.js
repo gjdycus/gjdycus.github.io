@@ -78,7 +78,6 @@ $(document).ready(function(){
 	});
 
 	var servicesTopOffset = $('.services .services-inner').offset().top;
-	var timelineTopOffset = $('.timeline').offset().top;
 	var skillsTopOffset = $('.skills').offset().top;
 	$(window).scroll(function(){
 		// Fixed Navbar
@@ -91,11 +90,6 @@ $(document).ready(function(){
 		{
 			$('.navbar-flat').removeClass('navbar-fixed-top');
 			$('.firstSec').removeClass('fixed');
-		}
-		// Timeline animation
-		if(window.pageYOffset > timelineTopOffset-windowH+200)
-		{
-			$('.timeline li').addClass('fadeInUp');
 		}
 		// Skills Chart animation
 		if(window.pageYOffset > skillsTopOffset-windowH+200)
