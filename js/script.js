@@ -97,7 +97,7 @@ $(document).ready(function(){
 			$('.chart').easyPieChart({
 				easing: 'easeInOut',
 				barColor: '#ffffff',
-				trackColor: '#d82c2e',
+				trackColor: '#4A9AA7',
 				scaleColor: false,
 				lineWidth: 4,
 				size: 152,
@@ -157,7 +157,7 @@ $(document).ready(function(){
 	// Form Validation
 	$.validate({
 		form:'.contactform',
-		borderColorOnError : '#c12728',
+		borderColorOnError : '#418894',
 		scrollToTopOnError : false,
 		validateOnBlur : false,
 		onError:function() {
